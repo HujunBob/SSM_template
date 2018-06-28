@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="username" />
+    <p>绑定：输入是啥，输出就是啥</p>
+    <p v-text="username"></p>
+    <hr>
+    <p >一次性绑定，初始化绑定，之后即便是修改了，也不会发生变化了</p>
+    <p v-once="username" v-html="username"></p>
+    <hr>
+    <p v-html="username">会将绑定内容转义成html</p>
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:"#app",
+        data:{
+            username:'buffer'
+        }
+    })
+</script>
+</html>

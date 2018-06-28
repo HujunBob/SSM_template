@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>
+    <script src="./js/DateFormat.js"></script>
+</head>
+<body>
+<div id="app">
+    <form action="./UserInfo/registe.action" method="post" enctype="multipart/form-data">
+       <table>
+           <tr>
+               <td>姓名：</td>
+               <td><input type="text" name="username" placeholder="输入用户名"/></td>
+           </tr>
+           <tr>
+               <td>密码：</td>
+               <td><input type="text" name="password" placeholder="输入用户名"/></td>
+           </tr>
+           <tr>
+               <td>上传文件：</td>
+               <td> <input type="file" name="pictureFile" /></td>
+           </tr>
+           <tr>
+               <td><input type="submit" /></td>
+           </tr>
+       </table>
+    </form>
+    <p v-html="date"></p>
+    <input type="button" value="发送Ajax请求" @click="sendMsg()">
+</div>
+</body>
+<script type="text/javascript">
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            username:'buffer',
+            date:""
+        },
+        mounted:function () {
+            this.date=DateFormat(new Date(),"yyyy-MM-dd HH:mm:ss");
+        },
+        methods:{
+            sendMsg:function(){
+                var url="./UserInfo/login.action";
+                var params={
+                    username:"tj",
+                    password:"tj",
+
+                }
+                this.$http.get(url,{params:params}).then(function (data) {
+                    console.log(data);
+                },function (data) {
+                    console.log(data);
+                })
+            }
+        }
+    })
+</script>
+</html>

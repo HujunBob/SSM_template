@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <package name="xin.qiliuhai.po" />
+    </typeAliases>
+
+    <mappers>
+        <!--<mapper resource="xin/qiliuhai/mapper/UserDao.xml"/>-->
+
+        <!--
+        使用class属性引入接口的全路径名称:
+        使用规则:
+            1. 接口的名称和映射文件名称除扩展名外要完全相同
+            2. 接口和映射文件要放在同一个目录下
+         -->
+        <mapper class="xin.qiliuhai.mapper.UserInfoDao"/>
+
+        <!-- 使用包扫描的方式批量引入Mapper接口
+                使用规则:
+                1. 接口的名称和映射文件名称除扩展名外要完全相同
+                2. 接口和映射文件要放在同一个目录下
+        -->
+        <!-- 		<package name="cn.itheima.mapper"/> -->
+    </mappers>
+</configuration>
